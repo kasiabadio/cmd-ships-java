@@ -1,14 +1,16 @@
 package org.example;
 
-public class Ship {
-    private int beginX;
-    private int beginY;
-    private int endX;
-    private int endY;
-    private boolean isSunk = false;
-    private boolean isHorizontal;
-    private int shipLength;
+import lombok.Getter;
+import lombok.Setter;
 
+public class Ship {
+    @Getter @Setter private int beginX;
+    @Getter @Setter private int beginY;
+    @Getter @Setter private int endX;
+    @Getter @Setter private int endY;
+    @Getter @Setter private boolean isSunk = false;
+    @Getter private int shipLength;
+    private boolean isHorizontal;
 
     public Ship(String coordOne, String coordTwo){
         if (coordOne.charAt(0) == coordTwo.charAt(0)){
@@ -19,61 +21,17 @@ public class Ship {
         setShipsPositions(coordOne, coordTwo);
     }
 
-    public int getBeginX(){
-        return this.beginX;
-    }
-
-    public void setBeginX(int coordX){
-        this.beginX = coordX;
-    }
-
-    public int getBeginY(){
-        return this.beginY;
-    }
-
-    public void setBeginY(int coordY){
-        this.beginY = coordY;
-    }
-
-    public int getEndX(){
-        return this.endX;
-    }
-
-    public void setEndX(int coordX){
-        this.endX = coordX;
-    }
-
-    public int getEndY(){
-        return this.endY;
-    }
-
-    public void setEndY(int coordY){
-        this.endY = coordY;
-    }
-
-    public void setIsSunk(){
-        this.isSunk = true;
-    }
-
-    public boolean getIsSunk(){
-        return this.isSunk;
-    }
-
-    public void setIsHorizontal(boolean horizontal){
-        this.isHorizontal = horizontal;
+    private void setIsHorizontal(boolean horizontal) {
+        isHorizontal = horizontal;
     }
 
     public boolean getIsHorizontal(){
         return this.isHorizontal;
     }
-
     public void setShipLength(int one, int two){
         this.shipLength = Math.abs(one - two) + 1;
     }
 
-    public int getShipLength(){
-        return this.shipLength;
-    }
 
     public boolean isShipValid(Board board){
         if (beginX > board.BOARD_SIZE || endX > board.BOARD_SIZE || beginY > board.BOARD_SIZE || endY > board.BOARD_SIZE){
@@ -223,5 +181,8 @@ public class Ship {
             }
         }
     }
+
+
+
 
 }
